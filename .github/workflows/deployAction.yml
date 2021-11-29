@@ -13,10 +13,6 @@ jobs:
           username: ${{ secrets.WABLI_SERVER_SSH_USERNAME }}
           password: ${{ secrets.WABLI_SERVER_SSH_PASSWORD }}
           port: ${{ secrets.WABLI_SERVER_SSH_PORT }}
-          script: |-
-            |
-                      cd ~/wabli-applications/laughing-invention/
-                      git reset --hard origin/main
-                      git pull https://github.com/wabliplatform/frontEnd-getAllListFirstPage.git
-                      bash -ci 'npm install'
-                      bash -ci 'start &'
+          script: >-
+            ./wabli-applications/deploy.sh -b main -d laughing-invention -r
+            https://github.com/wabliplatform/frontEnd-getAllListFirstPage.git
